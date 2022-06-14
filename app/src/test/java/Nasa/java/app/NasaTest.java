@@ -64,17 +64,50 @@ class NasaTest {
 
 
     }
+    @Test
+    public void ContinuousTurnRight(){
+        char actionR='R';
+        char directionN='N';
+        char newDirection = nasa.turnAround(directionN, actionR);
+        assertEquals(nasa.turnAround(newDirection,actionR),'S');
 
+
+    }
+
+/*    @Test
+    public void turnLeftInDirectionN() {
+        char actionL = 'L';
+        char directionN = 'N';
+        assertEquals(nasa.turnAround(directionN,actionL),'W');
+    }
+    @Test
+    public void turnLeftInDirectionE() {
+        char actionL = 'L';
+        char directionE = 'E';
+        assertEquals(nasa.turnAround(directionE,actionL),'N');
+    }
+    @Test
+    public void turnLeftInDirectionS() {
+        char actionL = 'L';
+        char directionS = 'S';
+        assertEquals(nasa.turnAround(directionS,actionL),'E');
+    }
+    @Test
+    public void turnLeftInDirectionW() {
+        char actionL = 'L';
+        char directionW = 'W';
+        assertEquals(nasa.turnAround(directionW,actionL),'S');
+    }*/
    /* @Test
     public void GoOneDistanceForwardWhenMeetM(){
         char direction='N';
         List<Integer> location = List.of(1, 2);
         List.of(5,5);
 char actionL='L';
-assertEquals(nasa.turnAround(directionW,actionL),'S');
-assertEquals(nasa.turnAround(directionS,actionL),'E');
-assertEquals(nasa.turnAround(directionE,actionL),'N');
-assertEquals(nasa.turnAround(directionN,actionL),'W');
+
+
+
+
         assertEquals(Nasa.turnAround(direction,action),'E');
         char difAction='L';
         assertEquals(Nasa.turnAround(direction,difAction),'W');
