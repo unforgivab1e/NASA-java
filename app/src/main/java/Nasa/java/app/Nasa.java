@@ -4,7 +4,6 @@ public class Nasa {
     static String  DIRECTION_RULE = "NESW";
 
     public static char turnAround(char direction, char action){
-
         int index= DIRECTION_RULE.lastIndexOf(direction);
         if((action+"").equalsIgnoreCase("R")){
             index++;

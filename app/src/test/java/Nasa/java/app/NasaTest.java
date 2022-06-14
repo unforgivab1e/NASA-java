@@ -22,5 +22,7 @@ class NasaTest {
         char direction='N';
         char action='R';
         assertEquals(Nasa.turnAround(direction,action),'E');
+        char difAction='L';
+        assertEquals(Nasa.turnAround(direction,difAction),'W');
     }
 }
