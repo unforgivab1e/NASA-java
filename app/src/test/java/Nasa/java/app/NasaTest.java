@@ -97,6 +97,15 @@ class NasaTest {
         char directionW = 'W';
         assertEquals(nasa.turnAround(directionW,actionL),'S');
     }
+    @Test
+    public void ContinuousTurnLeft(){
+        char actionL='L';
+        char directionN='N';
+        char newDirection = nasa.turnAround(directionN, actionL);
+        assertEquals(nasa.turnAround(newDirection,actionL),'S');
+
+
+    }
 /*
 
 
