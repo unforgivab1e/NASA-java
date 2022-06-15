@@ -116,22 +116,12 @@ class NasaTest {
 
 
     }
-/*
-
-
-   */
-   /* @Test
+    @Test
     public void GoOneDistanceForwardWhenMeetM(){
         char direction='N';
         List<Integer> location = List.of(1, 2);
-        List.of(5,5);
-char actionL='L';
-
-
-
-
-        assertEquals(Nasa.turnAround(direction,action),'E');
-        char difAction='L';
-        assertEquals(Nasa.turnAround(direction,difAction),'W');
-    }*/
+        List<Integer> walk = nasa.walk(direction, location);
+        assertEquals(1,walk.get(0));
+        assertEquals(3,walk.get(1));
+    }
 }
