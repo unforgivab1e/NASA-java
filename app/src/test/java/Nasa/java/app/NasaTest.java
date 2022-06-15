@@ -124,4 +124,13 @@ class NasaTest {
         assertEquals(1,walk.get(0));
         assertEquals(3,walk.get(1));
     }
+    @Test
+    public void mixedOperationOfMultipleInstructions(){
+        char direction='N';
+        List<Integer> location = List.of(1, 2);
+        List<Integer> walk = nasa.walk(direction, location);
+        assertEquals(1,walk.get(0));
+        assertEquals(3,walk.get(1));
+    }
+
 }

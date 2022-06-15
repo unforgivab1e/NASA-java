@@ -66,23 +66,19 @@ public class Nasa {
         List<Integer> result =new ArrayList<>();
         switch(direction)
         {
-            case 'n' :
             case 'N' :
                 result.add(location.get(0));
                 result.add(location.get(1)+1);
                 break;
             case 'W' :
-            case 'w' :
                 result.add(location.get(0)-1);
                 result.add(location.get(1));
                 break;
             case 'S' :
-            case 's' :
                 result.add(location.get(0));
                 result.add(location.get(1)-1);
                 break;
             case 'E' :
-            case 'e' :
                 result.add(location.get(0)+1);
                 result.add(location.get(1));
                 break;
