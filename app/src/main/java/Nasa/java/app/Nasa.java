@@ -12,27 +12,15 @@ public class Nasa {
         Scanner sc = new Scanner(System.in);
         String[] mapInput= sc.nextLine().split(" ");
         nasa.getMap(Integer.parseInt(mapInput[0]),Integer.parseInt(mapInput[1]));
-        /*while(true){
-            String[] LocationInput= sc.nextLine().split(" ");
+        while (true) {
+            String[] LocationInput = sc.nextLine().split(" ");
             location.clear();
             location.add(Integer.parseInt(LocationInput[0]));
             location.add(Integer.parseInt(LocationInput[1]));
-            direction=LocationInput[2].toCharArray()[0];
-            char[] action= sc.nextLine().toCharArray();
-            for (char c : action) {
-                switch(c)
-                {
-                    case 'L' :
-                    case 'R' :
-                        direction= nasa.turnAround( direction, c);
-                        break;
-                    case 'M' :
-                        location= nasa.walk( direction, location);
-                        break;
-                }
-            }
-            System.out.println(location.get(0)+" "+location.get(1)+" "+direction);
-        }*/
+            direction = LocationInput[2].toCharArray()[0];
+            List finishCommand = nasa.getCommand(sc.nextLine(), direction, location);
+            System.out.println(finishCommand.get(0) + " " + finishCommand.get(1) + " " + finishCommand.get(2));
+        }
     }
 
 
