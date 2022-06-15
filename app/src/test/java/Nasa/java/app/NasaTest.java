@@ -126,11 +126,13 @@ class NasaTest {
     }
     @Test
     public void mixedOperationOfMultipleInstructions(){
-        char direction='N';
+        char actionR = 'R';
+        char directionN = 'N';
         List<Integer> location = List.of(1, 2);
-        List<Integer> walk = nasa.walk(direction, location);
-        assertEquals(1,walk.get(0));
-        assertEquals(3,walk.get(1));
+        char newDirection = nasa.turnAround(directionN, actionR);
+        List<Integer> walk = nasa.walk(newDirection, location);
+        assertEquals(2, walk.get(0));
+        assertEquals(2, walk.get(1));
     }
 
 }
