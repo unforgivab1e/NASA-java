@@ -23,24 +23,24 @@ public class Fuction {
         return List.of(x, y);
     }
 
-    public static List<Integer> walk(char direction, List<Integer> location) {
+    public static List<Integer> walk(int x, int y, char direction) {
         List<Integer> result = new ArrayList<>();
         switch (direction) {
             case 'N':
-                result.add(location.get(0));
-                result.add(location.get(1) + 1);
+                result.add(x);
+                result.add(y + 1);
                 break;
             case 'W':
-                result.add(location.get(0) - 1);
-                result.add(location.get(1));
+                result.add(x - 1);
+                result.add(y);
                 break;
             case 'S':
-                result.add(location.get(0));
-                result.add(location.get(1) - 1);
+                result.add(x);
+                result.add(y - 1);
                 break;
             case 'E':
-                result.add(location.get(0) + 1);
-                result.add(location.get(1));
+                result.add(x + 1);
+                result.add(y);
                 break;
         }
 

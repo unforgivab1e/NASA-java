@@ -6,9 +6,6 @@ import main.java.Nasa.java.app.Nasa;
 import main.resources.ResultDto;
 import main.resources.Robot;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import static main.resources.Fuction.*;
@@ -122,20 +119,15 @@ class NasaTest {
     @Test
     public void GoOneDistanceForwardWhenMeetM() {
         char direction = 'N';
-        List<Integer> location = List.of(1, 2);
-        List<Integer> walk = walk(direction, location);
+        List<Integer> walk = walk(1, 2, direction);
         assertEquals(1, walk.get(0));
         assertEquals(3, walk.get(1));
-
-        /*Robot(1,2,"E").walk("L")
-        Robot(1,2,"E").walk("LLM")*/
     }
 
     @Test
     public void mixedOperationOfMultipleInstructions() {
         char directionN = 'N';
-        List<Integer> location = List.of(1, 2);
-        ResultDto result = new Robot(location, directionN).getCommand("RM");
+        ResultDto result = new Robot(1, 2, directionN).getCommand("RM");
         assertEquals(2, result.getX());
         assertEquals(2, result.getY());
         assertEquals('E', result.getDirection());
@@ -144,8 +136,7 @@ class NasaTest {
     @Test
     public void checkMultiplerRsult1() {
         char direction = 'N';
-        List<Integer> location = List.of(1, 2);
-        ResultDto result = new Robot(location, direction).getCommand("LMLMLMLMM");
+        ResultDto result = new Robot(1, 2, direction).getCommand("LMLMLMLMM");
         assertEquals(1, result.getX());
         assertEquals(3, result.getY());
         assertEquals('N', result.getDirection());
@@ -154,8 +145,7 @@ class NasaTest {
     @Test
     public void checkMultiplerRsult2() {
         char direction = 'E';
-        List<Integer> location = List.of(3, 3);
-        ResultDto result = new Robot(location, direction).getCommand("MMRMMRMRRM");
+        ResultDto result = new Robot(3, 3, direction).getCommand("MMRMMRMRRM");
         assertEquals(5, result.getX());
         assertEquals(1, result.getY());
         assertEquals('E', result.getDirection());
@@ -163,11 +153,9 @@ class NasaTest {
     @Test
     public void HandleMultipleRobotCases() {
         char direction1 = 'N';
-        List<Integer> location1 = List.of(1, 2);
         char direction2 = 'E';
-        List<Integer> location2 = List.of(3, 3);
-        ResultDto result1 = new Robot(location1, direction1).getCommand("LMLMLMLMM");
-        ResultDto result2 = new Robot(location2, direction2).getCommand("MMRMMRMRRM");
+        ResultDto result1 = new Robot(1, 2, direction1).getCommand("LMLMLMLMM");
+        ResultDto result2 = new Robot(3, 3, direction2).getCommand("MMRMMRMRRM");
         assertEquals(1, result1.getX());
         assertEquals(3, result1.getY());
         assertEquals('N', result1.getDirection());

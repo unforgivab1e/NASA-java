@@ -23,7 +23,7 @@ public class Nasa {
             location.add(Integer.parseInt(LocationInput[0]));
             location.add(Integer.parseInt(LocationInput[1]));
             direction = LocationInput[2].toCharArray()[0];
-            Robot robot = new Robot(location, direction);
+            Robot robot = new Robot(location.get(0), location.get(1), direction);
             ResultDto finishCommand = robot.getCommand(sc.nextLine());
             System.out.println(finishCommand.getX() + " " + finishCommand.getY() + " " + finishCommand.getDirection());
         }

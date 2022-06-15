@@ -6,22 +6,24 @@ import static main.resources.Fuction.turnAround;
 import static main.resources.Fuction.walk;
 
 public class Robot {
-    private List<Integer> location;
-
-
-    public Robot(List<Integer> location, char direction) {
-        this.location = location;
-        this.direction = direction;
-    }
-
+    private int x;
+    private int y;
     private char direction;
 
-    public List<Integer> getLocation() {
-        return location;
+    public int getX() {
+        return x;
     }
 
-    public void setLocation(List<Integer> location) {
-        this.location = location;
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public char getDirection() {
@@ -32,6 +34,13 @@ public class Robot {
         this.direction = direction;
     }
 
+    public Robot(int x, int y, char direction) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
+    }
+
+
     public ResultDto getCommand(String command) {
         char[] action = command.toCharArray();
         for (char c : action) {
@@ -41,12 +50,13 @@ public class Robot {
                     direction = turnAround(direction, c);
                     break;
                 case 'M':
-                    location = walk(direction, location);
+                    x = walk(x, y, direction).get(0);
+                    y = walk(x, y, direction).get(1);
                     break;
             }
         }
 
-        return new ResultDto(location.get(0), location.get(1), direction);
+        return new ResultDto(x, y, direction);
 
     }
 
