@@ -3,12 +3,15 @@ package test.java.Nasa.java.app;
 
 
 import main.java.Nasa.java.app.Nasa;
+import main.resources.ResultDto;
+import main.resources.Robot;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import static main.resources.Fuction.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class NasaTest {
@@ -22,11 +25,11 @@ class NasaTest {
     }
     Nasa nasa=new Nasa();
     @Test
-    public void buildMap(){
-        int x=5;
-        int y=5;
-        assertEquals(5,nasa.getMap(x,y).get(0));
-        assertEquals(5,nasa.getMap(x,y).get(1));
+    public void buildMap() {
+        int x = 5;
+        int y = 5;
+        assertEquals(5, getMap(x, y).get(0));
+        assertEquals(5, getMap(x, y).get(1));
 
     }
 
@@ -34,7 +37,7 @@ class NasaTest {
     public void turnRightInDirectionN(){
         char actionR='R';
         char directionN='N';
-        assertEquals(nasa.turnAround(directionN,actionR),'E');
+        assertEquals(turnAround(directionN, actionR), 'E');
 
 
     }
@@ -42,7 +45,7 @@ class NasaTest {
     public void turnRightInDirectionE(){
         char actionR='R';
         char directionE='E';
-        assertEquals(nasa.turnAround(directionE,actionR),'S');
+        assertEquals(turnAround(directionE, actionR), 'S');
 
 
 
@@ -51,7 +54,7 @@ class NasaTest {
     public void turnRightInDirectionS(){
         char actionR='R';
         char directionS='S';
-        assertEquals(nasa.turnAround(directionS,actionR),'W');
+        assertEquals(turnAround(directionS, actionR), 'W');
 
 
 
@@ -60,16 +63,16 @@ class NasaTest {
     public void turnRightInDirectionW(){
         char actionR='R';
         char directionW='W';
-        assertEquals(nasa.turnAround(directionW,actionR),'N');
+        assertEquals(turnAround(directionW, actionR), 'N');
 
 
     }
     @Test
-    public void ContinuousTurnRight(){
-        char actionR='R';
-        char directionN='N';
-        char newDirection = nasa.turnAround(directionN, actionR);
-        assertEquals(nasa.turnAround(newDirection,actionR),'S');
+    public void ContinuousTurnRight() {
+        char actionR = 'R';
+        char directionN = 'N';
+        char newDirection = turnAround(directionN, actionR);
+        assertEquals(turnAround(newDirection, actionR), 'S');
 
 
     }
@@ -77,103 +80,100 @@ class NasaTest {
     public void turnLeftInDirectionN() {
         char actionL = 'L';
         char directionN = 'N';
-        assertEquals(nasa.turnAround(directionN,actionL),'W');
+        assertEquals(turnAround(directionN, actionL), 'W');
     }
     @Test
     public void turnLeftInDirectionE() {
         char actionL = 'L';
         char directionE = 'E';
-        assertEquals(nasa.turnAround(directionE,actionL),'N');
+        assertEquals(turnAround(directionE, actionL), 'N');
     }
     @Test
     public void turnLeftInDirectionS() {
         char actionL = 'L';
         char directionS = 'S';
-        assertEquals(nasa.turnAround(directionS,actionL),'E');
+        assertEquals(turnAround(directionS, actionL), 'E');
     }
     @Test
     public void turnLeftInDirectionW() {
         char actionL = 'L';
         char directionW = 'W';
-        assertEquals(nasa.turnAround(directionW,actionL),'S');
+        assertEquals(turnAround(directionW, actionL), 'S');
     }
     @Test
-    public void ContinuousTurnLeft(){
-        char actionL='L';
-        char directionN='N';
-        char newDirection = nasa.turnAround(directionN, actionL);
-        assertEquals(nasa.turnAround(newDirection,actionL),'S');
-
-
-    }
-    @Test
-    public void ContinuousTurnLeftThenRight(){
-        char actionL='L';
-        char actionR='R';
-        char directionN='N';
-        char newDirection = nasa.turnAround(directionN, actionL);
-        assertEquals(nasa.turnAround(newDirection,actionR),'N');
+    public void ContinuousTurnLeft() {
+        char actionL = 'L';
+        char directionN = 'N';
+        char newDirection = turnAround(directionN, actionL);
+        assertEquals(turnAround(newDirection, actionL), 'S');
 
 
     }
     @Test
-    public void GoOneDistanceForwardWhenMeetM(){
-        char direction='N';
+    public void ContinuousTurnLeftThenRight() {
+        char actionL = 'L';
+        char actionR = 'R';
+        char directionN = 'N';
+        char newDirection = turnAround(directionN, actionL);
+        assertEquals(turnAround(newDirection, actionR), 'N');
+
+
+    }
+    @Test
+    public void GoOneDistanceForwardWhenMeetM() {
+        char direction = 'N';
         List<Integer> location = List.of(1, 2);
-        List<Integer> walk = nasa.walk(direction, location);
-        assertEquals(1,walk.get(0));
-        assertEquals(3,walk.get(1));
+        List<Integer> walk = walk(direction, location);
+        assertEquals(1, walk.get(0));
+        assertEquals(3, walk.get(1));
+
+        /*Robot(1,2,"E").walk("L")
+        Robot(1,2,"E").walk("LLM")*/
     }
 
     @Test
     public void mixedOperationOfMultipleInstructions() {
-        char actionR = 'R';
         char directionN = 'N';
         List<Integer> location = List.of(1, 2);
-        char newDirection = nasa.turnAround(directionN, actionR);
-        List<Integer> walk = nasa.walk(newDirection, location);
-        assertEquals(2, walk.get(0));
-        assertEquals(2, walk.get(1));
+        ResultDto result = new Robot(location, directionN).getCommand("RM");
+        assertEquals(2, result.getX());
+        assertEquals(2, result.getY());
+        assertEquals('E', result.getDirection());
     }
 
     @Test
     public void checkMultiplerRsult1() {
-        String command = "LMLMLMLMM";
         char direction = 'N';
         List<Integer> location = List.of(1, 2);
-        List finishCommand = nasa.getCommand(command, direction, location);
-        assertEquals(1, finishCommand.get(0));
-        assertEquals(3, finishCommand.get(1));
-        assertEquals('N', finishCommand.get(2));
+        ResultDto result = new Robot(location, direction).getCommand("LMLMLMLMM");
+        assertEquals(1, result.getX());
+        assertEquals(3, result.getY());
+        assertEquals('N', result.getDirection());
     }
 
     @Test
     public void checkMultiplerRsult2() {
-        String command = "MMRMMRMRRM";
         char direction = 'E';
         List<Integer> location = List.of(3, 3);
-        List finishCommand = nasa.getCommand(command, direction, location);
-        assertEquals(5, finishCommand.get(0));
-        assertEquals(1, finishCommand.get(1));
-        assertEquals('E', finishCommand.get(2));
+        ResultDto result = new Robot(location, direction).getCommand("MMRMMRMRRM");
+        assertEquals(5, result.getX());
+        assertEquals(1, result.getY());
+        assertEquals('E', result.getDirection());
     }
-
     @Test
     public void HandleMultipleRobotCases() {
-        String command1 = "LMLMLMLMM";
         char direction1 = 'N';
         List<Integer> location1 = List.of(1, 2);
-        String command2 = "MMRMMRMRRM";
         char direction2 = 'E';
         List<Integer> location2 = List.of(3, 3);
-        List finishCommand1 = nasa.getCommand(command1, direction1, location1);
-        List finishCommand2 = nasa.getCommand(command2, direction2, location2);
-        assertEquals(1, finishCommand1.get(0));
-        assertEquals(3, finishCommand1.get(1));
-        assertEquals('N', finishCommand1.get(2));
-        assertEquals(5, finishCommand2.get(0));
-        assertEquals(1, finishCommand2.get(1));
-        assertEquals('E', finishCommand2.get(2));
+        ResultDto result1 = new Robot(location1, direction1).getCommand("LMLMLMLMM");
+        ResultDto result2 = new Robot(location2, direction2).getCommand("MMRMMRMRRM");
+        assertEquals(1, result1.getX());
+        assertEquals(3, result1.getY());
+        assertEquals('N', result1.getDirection());
+        assertEquals(5, result2.getX());
+        assertEquals(1, result2.getY());
+        assertEquals('E', result2.getDirection());
     }
 
 }
