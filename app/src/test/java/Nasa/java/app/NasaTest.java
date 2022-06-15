@@ -158,4 +158,22 @@ class NasaTest {
         assertEquals('E', finishCommand.get(2));
     }
 
+    @Test
+    public void HandleMultipleRobotCases() {
+        String command1 = "LMLMLMLMM";
+        char direction1 = 'N';
+        List<Integer> location1 = List.of(1, 2);
+        String command2 = "MMRMMRMRRM";
+        char direction2 = 'E';
+        List<Integer> location2 = List.of(3, 3);
+        List finishCommand1 = nasa.getCommand(command1, direction1, location1);
+        List finishCommand2 = nasa.getCommand(command2, direction2, location2);
+        assertEquals(1, finishCommand1.get(0));
+        assertEquals(3, finishCommand1.get(1));
+        assertEquals('N', finishCommand1.get(2));
+        assertEquals(5, finishCommand2.get(0));
+        assertEquals(1, finishCommand2.get(1));
+        assertEquals('E', finishCommand2.get(2));
+    }
+
 }
