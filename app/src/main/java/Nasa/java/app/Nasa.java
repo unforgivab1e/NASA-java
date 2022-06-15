@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Nasa {
     static String  DIRECTION_RULE = "NESW";
     public static void main(String[] args) {
-        Nasa nasa=new Nasa();
-        List<Integer> location = null;
+        Nasa nasa = new Nasa();
+        List<Integer> location = new ArrayList<>();
         char direction;
         Scanner sc = new Scanner(System.in);
         String[] mapInput= sc.nextLine().split(" ");
