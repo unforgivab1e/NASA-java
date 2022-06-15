@@ -73,8 +73,7 @@ class NasaTest {
 
 
     }
-
-/*    @Test
+    @Test
     public void turnLeftInDirectionN() {
         char actionL = 'L';
         char directionN = 'N';
@@ -97,7 +96,11 @@ class NasaTest {
         char actionL = 'L';
         char directionW = 'W';
         assertEquals(nasa.turnAround(directionW,actionL),'S');
-    }*/
+    }
+/*
+
+
+   */
    /* @Test
     public void GoOneDistanceForwardWhenMeetM(){
         char direction='N';

@@ -21,10 +21,10 @@ public class Nasa {
             index++;
             index=index>3?index-4:index;
         }
-        /*if((action+"").equalsIgnoreCase("L")){
+        if((action+"").equalsIgnoreCase("L")){
             index--;
             index=index<0?index+4:index;
-        }*/
+        }
         return DIRECTION_RULE.charAt(index);
     }
     public List<Integer> getMap(int x, int y) {
