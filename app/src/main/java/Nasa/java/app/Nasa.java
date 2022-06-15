@@ -22,20 +22,14 @@ public class Nasa {
             for (char c : action) {
                 switch(c)
                 {
-                    case 'l' :
                     case 'L' :
-                    case 'r' :
                     case 'R' :
                         direction= nasa.turnAround( direction, c);
                         break;
-                    case 'm' :
                     case 'M' :
                         location= nasa.walk( direction, location);
                         break;
                 }
-
-// 5 3 s   mmr
-
             }
             System.out.println(location.get(0)+" "+location.get(1)+" "+direction);
         }*/
@@ -78,8 +72,8 @@ public class Nasa {
                 result.add(location.get(0));
                 result.add(location.get(1)-1);
                 break;
-            case 'E' :
-                result.add(location.get(0)+1);
+            case 'E':
+                result.add(location.get(0) + 1);
                 result.add(location.get(1));
                 break;
         }
@@ -87,4 +81,20 @@ public class Nasa {
         return result;
     }
 
+    public List getCommand(String command, char direction, List<Integer> location) {
+        char[] action = command.toCharArray();
+        for (char c : action) {
+            switch (c) {
+                case 'L':
+                case 'R':
+                    direction = turnAround(direction, c);
+                    break;
+                case 'M':
+                    location = walk(direction, location);
+                    break;
+            }
+        }
+        return List.of(location.get(0), location.get(1), direction);
+
+    }
 }

@@ -124,8 +124,9 @@ class NasaTest {
         assertEquals(1,walk.get(0));
         assertEquals(3,walk.get(1));
     }
+
     @Test
-    public void mixedOperationOfMultipleInstructions(){
+    public void mixedOperationOfMultipleInstructions() {
         char actionR = 'R';
         char directionN = 'N';
         List<Integer> location = List.of(1, 2);
@@ -133,6 +134,28 @@ class NasaTest {
         List<Integer> walk = nasa.walk(newDirection, location);
         assertEquals(2, walk.get(0));
         assertEquals(2, walk.get(1));
+    }
+
+    @Test
+    public void checkMultiplerRsult1() {
+        String command = "LMLMLMLMM";
+        char direction = 'N';
+        List<Integer> location = List.of(1, 2);
+        List finishCommand = nasa.getCommand(command, direction, location);
+        assertEquals(1, finishCommand.get(0));
+        assertEquals(3, finishCommand.get(1));
+        assertEquals('N', finishCommand.get(2));
+    }
+
+    @Test
+    public void checkMultiplerRsult2() {
+        String command = "MMRMMRMRRM";
+        char direction = 'E';
+        List<Integer> location = List.of(3, 3);
+        List finishCommand = nasa.getCommand(command, direction, location);
+        assertEquals(5, finishCommand.get(0));
+        assertEquals(1, finishCommand.get(1));
+        assertEquals('E', finishCommand.get(2));
     }
 
 }
