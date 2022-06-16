@@ -121,4 +121,12 @@ class NasaTest {
         assertEquals(0, robot.getX());
         assertEquals(2, robot.getY());
     }
+
+    @Test
+    public void checkMultipleOperationCommand() {
+        Robot robot = new Robot(1, 2, 'N').walk().turnRight();
+        assertEquals(1, robot.getX());
+        assertEquals(3, robot.getY());
+        assertEquals('E', robot.getDirection());
+    }
 }
