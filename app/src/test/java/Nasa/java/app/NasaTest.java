@@ -114,4 +114,11 @@ class NasaTest {
         assertEquals(1, robot.getX());
         assertEquals(1, robot.getY());
     }
+
+    @Test
+    public void walkOneStepFromWestDirection() {
+        Robot robot = new Robot(1, 2, 'W').walk();
+        assertEquals(0, robot.getX());
+        assertEquals(2, robot.getY());
+    }
 }

@@ -88,6 +88,9 @@ public class Robot {
         if (direction == 'S') {
             return new Robot(x, y - 1, direction);
         }
+        if (direction == 'W') {
+            return new Robot(x - 1, y, direction);
+        }
         return null;
     }
 }
