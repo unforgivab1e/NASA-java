@@ -82,6 +82,9 @@ public class Robot {
         if (direction == 'N') {
             return new Robot(x, y + 1, direction);
         }
+        if (direction == 'E') {
+            return new Robot(x + 1, y, direction);
+        }
         return null;
     }
 }
