@@ -40,7 +40,13 @@ public class Robot {
     public Robot turnRight() {
         if (direction == 'N') {
             direction = 'E';
+            return new Robot(x, y, direction);
         }
-        return new Robot(x, y, direction);
+
+        if (direction == 'E') {
+            direction = 'S';
+            return new Robot(x, y, direction);
+        }
+        return null;
     }
 }
