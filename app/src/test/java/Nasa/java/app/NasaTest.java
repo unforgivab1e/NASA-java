@@ -185,5 +185,17 @@ class NasaTest {
         assertEquals('E', robot.getDirection());
     }
 
+    @Test
+    public void multipleRobotSituation() {
+        Robot robot = new Robot(1, 2, 'N').getCommand("LMLMLMLMM");
+        assertEquals(1, robot.getX());
+        assertEquals(3, robot.getY());
+        assertEquals('N', robot.getDirection());
+        Robot robot2 = new Robot(3, 3, 'E').getCommand("MMRMMRMRRM");
+        assertEquals(5, robot2.getX());
+        assertEquals(1, robot2.getY());
+        assertEquals('E', robot2.getDirection());
+    }
+
 
 }
