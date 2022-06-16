@@ -63,4 +63,10 @@ class NasaTest {
         Robot robot = new Robot(1, 2, 'N').turnLeft();
         assertEquals('W', robot.getDirection());
     }
+
+    @Test
+    public void eastTurnLeftOneTime() {
+        Robot robot = new Robot(1, 2, 'E').turnLeft();
+        assertEquals('N', robot.getDirection());
+    }
 }
