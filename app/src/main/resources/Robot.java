@@ -71,6 +71,10 @@ public class Robot {
             direction = 'E';
             return new Robot(x, y, direction);
         }
+        if (direction == 'W') {
+            direction = 'S';
+            return new Robot(x, y, direction);
+        }
         return null;
     }
 }
