@@ -106,6 +106,9 @@ public class Robot {
             if (operation == 'L') {
                 robot = turnLeft();
             }
+            if (operation == 'M') {
+                robot = walk();
+            }
         }
         return robot;
     }
