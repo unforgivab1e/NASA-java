@@ -77,4 +77,11 @@ public class Robot {
         }
         return null;
     }
+
+    public Robot walk() {
+        if (direction == 'N') {
+            return new Robot(x, y + 1, direction);
+        }
+        return null;
+    }
 }
