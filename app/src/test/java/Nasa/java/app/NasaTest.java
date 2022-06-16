@@ -1,14 +1,10 @@
 package test.java.Nasa.java.app;
-
-
-
-import main.java.Nasa.java.app.Nasa;
 import main.resources.ResultDto;
 import main.resources.Robot;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 
-import static main.resources.Fuction.*;
+import static main.resources.Function.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class NasaTest {
@@ -20,7 +16,7 @@ class NasaTest {
     @org.junit.jupiter.api.AfterEach
     void tearDown() {
     }
-    Nasa nasa=new Nasa();
+
     @Test
     public void buildMap() {
         int x = 5;

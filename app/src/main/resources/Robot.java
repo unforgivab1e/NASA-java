@@ -1,9 +1,7 @@
 package main.resources;
 
-import java.util.List;
-
-import static main.resources.Fuction.turnAround;
-import static main.resources.Fuction.walk;
+import static main.resources.Function.turnAround;
+import static main.resources.Function.walk;
 
 public class Robot {
     private int x;
@@ -40,6 +38,15 @@ public class Robot {
         this.direction = direction;
     }
 
+
+    /*public ResultDto turnLeft(){
+        if(direction == 'N'){
+            return new ResultDto(x, y, 'W');
+        }else if(direction == 'E'){
+            return new ResultDto(x, y, 'N');
+        }
+
+    }*/
 
     public ResultDto getCommand(String command) {
         char[] action = command.toCharArray();

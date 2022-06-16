@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static main.resources.Fuction.getMap;
+import static main.resources.Function.getMap;
 
 public class Nasa {
 
