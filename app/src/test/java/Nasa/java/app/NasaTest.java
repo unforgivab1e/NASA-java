@@ -129,4 +129,16 @@ class NasaTest {
         assertEquals(3, robot.getY());
         assertEquals('E', robot.getDirection());
     }
+
+    @Test
+    public void checkCommandRCanTurnRight() {
+        Robot robot = new Robot(1, 2, 'N').getCommand("R");
+        assertEquals('E', robot.getDirection());
+    }
+
+    @Test
+    public void checkCommandRRCanTurnRightTwoTimes() {
+        Robot robot = new Robot(1, 2, 'N').getCommand("RR");
+        assertEquals('S', robot.getDirection());
+    }
 }

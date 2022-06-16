@@ -29,6 +29,9 @@ public class Robot {
         this.direction = direction;
     }
 
+    public Robot() {
+    }
+
 
     public Robot(int x, int y, char direction) {
         this.x = x;
@@ -92,5 +95,15 @@ public class Robot {
             return new Robot(x - 1, y, direction);
         }
         return null;
+    }
+
+    public Robot getCommand(String command) {
+        Robot robot = new Robot();
+        for (char operation : command.toCharArray()) {
+            if (operation == 'R') {
+                robot = turnRight();
+            }
+        }
+        return robot;
     }
 }
