@@ -57,4 +57,12 @@ public class Robot {
         }
         return null;
     }
+
+    public Robot turnLeft() {
+        if (direction == 'N') {
+            direction = 'W';
+            return new Robot(x, y, direction);
+        }
+        return null;
+    }
 }
