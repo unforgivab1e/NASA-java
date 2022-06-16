@@ -52,4 +52,9 @@ class NasaTest {
         assertEquals('N', robot.getDirection());
     }
 
+    @Test
+    public void continuousRightTurnFromNorthDirection() {
+        Robot robot = new Robot(1, 2, 'N').turnRight().turnRight();
+        assertEquals('S', robot.getDirection());
+    }
 }
