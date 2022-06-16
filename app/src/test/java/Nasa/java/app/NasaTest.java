@@ -147,4 +147,10 @@ class NasaTest {
         Robot robot = new Robot(1, 2, 'N').getCommand("L");
         assertEquals('W', robot.getDirection());
     }
+
+    @Test
+    public void checkCommandRLCanTurnRightThenTurnLeft() {
+        Robot robot = new Robot(1, 2, 'N').getCommand("RL");
+        assertEquals('N', robot.getDirection());
+    }
 }
