@@ -98,18 +98,22 @@ public class Robot {
     }
 
     public Robot getCommand(String command) {
-        Robot robot = new Robot();
+        Robot resultRobot = new Robot(x, y, direction);
         for (char operation : command.toCharArray()) {
             if (operation == 'R') {
-                robot = turnRight();
+                resultRobot = resultRobot.turnRight();
+
+                continue;
             }
             if (operation == 'L') {
-                robot = turnLeft();
+                resultRobot = resultRobot.turnLeft();
+                continue;
             }
             if (operation == 'M') {
-                robot = walk();
+                resultRobot = resultRobot.walk();
+                continue;
             }
         }
-        return robot;
+        return resultRobot;
     }
 }

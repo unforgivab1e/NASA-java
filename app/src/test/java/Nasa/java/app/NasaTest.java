@@ -158,7 +158,15 @@ class NasaTest {
     public void checkCommandMCanGoStraight() {
         Robot robot = new Robot(1, 2, 'N').getCommand("M");
         assertEquals(1, robot.getX());
-        assertEquals(3, robot.getY());
+        assertEquals(4, robot.getY());
+    }
+
+    @Test
+    public void checkCommandRMLCanTurnRightThenGoStraightTurnLeft() {
+        Robot robot = new Robot(1, 2, 'N').getCommand("RML");
+        assertEquals(2, robot.getX());
+        assertEquals(2, robot.getY());
+        assertEquals('N', robot.getDirection());
     }
 
 
