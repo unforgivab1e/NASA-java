@@ -1,5 +1,4 @@
 package main.resources;
-
 public class Robot {
     int x;
     int y;
@@ -9,38 +8,19 @@ public class Robot {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
     }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public char getDirection() {
         return direction;
     }
-
-    public void setDirection(char direction) {
-        this.direction = direction;
-    }
-
-    public Robot() {
-    }
-
-
     public Robot(int x, int y, char direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;
     }
 
-
-    public Robot turnRight() {
+    private Robot turnRight() {
         if (direction == 'N') {
             direction = 'E';
             return new Robot(x, y, direction);
@@ -61,7 +41,7 @@ public class Robot {
         return null;
     }
 
-    public Robot turnLeft() {
+    private Robot turnLeft() {
         if (direction == 'N') {
             direction = 'W';
             return new Robot(x, y, direction);
@@ -81,7 +61,7 @@ public class Robot {
         return null;
     }
 
-    public Robot walk() {
+    private Robot walk() {
         if (direction == 'N') {
             return new Robot(x, y + 1, direction);
         }
@@ -100,20 +80,19 @@ public class Robot {
     public Robot getCommand(String command) {
         Robot resultRobot = new Robot(x, y, direction);
         for (char operation : command.toCharArray()) {
-            if (operation == 'R') {
-                resultRobot = resultRobot.turnRight();
-
-                continue;
-            }
-            if (operation == 'L') {
-                resultRobot = resultRobot.turnLeft();
-                continue;
-            }
-            if (operation == 'M') {
-                resultRobot = resultRobot.walk();
-                continue;
-            }
+            resultRobot = executeCommand(resultRobot, operation);
         }
         return resultRobot;
+    }
+
+    private Robot executeCommand(Robot robot, char command) {
+        if (command == 'R') {
+            return robot.turnRight();
+        } else if (command == 'L') {
+            return robot.turnLeft();
+        } else if (command == 'M') {
+            return robot.walk();
+        }
+        throw new IllegalArgumentException("Unknown command:" + command);
     }
 }

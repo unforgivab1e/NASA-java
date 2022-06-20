@@ -1,200 +1,229 @@
 package test.java.Nasa.java.app;
 
-
-import main.java.Nasa.java.app.Nasa;
+import main.resources.Map;
 import main.resources.Robot;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NasaTest {
 
-    @org.junit.jupiter.api.BeforeEach
-    void setUp() {
-    }
-
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
-    }
-
-    Nasa nasa = new Nasa();
+    static int X_VALUE = 1;
+    static int Y_VALUE = 2;
 
     @Test
-    public void createFIveByFiveMap() {
-        List<Integer> map = nasa.buildMap(5, 5);
-        assertEquals(5, map.get(0));
-        assertEquals(5, map.get(1));
+    public void shouldCreateNewMapWhenGet_X_And_Y() {
+        Map map = new Map(5, 5);
+
+        assertEquals(5, map.getX());
+        assertEquals(5, map.getY());
     }
 
     @Test
-    public void northTurnRightOneTime() {
-        Robot robot = new Robot(1, 2, 'N').turnRight();
-        assertEquals('E', robot.getDirection());
+    public void shouldGet_E_WhenNorthGetCommand_R() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
+
+        Robot resultRobot = robot.getCommand("R");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('E', resultRobot.getDirection());
     }
 
     @Test
-    public void eastTurnRightOneTime() {
-        Robot robot = new Robot(1, 2, 'E').turnRight();
-        assertEquals('S', robot.getDirection());
+    public void shouldGet_S_WhenEastGetCommand_R() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'E');
+
+        Robot resultRobot = robot.getCommand("R");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('S', resultRobot.getDirection());
     }
 
     @Test
-    public void southTurnRightOneTime() {
-        Robot robot = new Robot(1, 2, 'S').turnRight();
-        assertEquals('W', robot.getDirection());
+    public void shouldGet_W_WhenWestGetCommand_R() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'S');
+
+        Robot resultRobot = robot.getCommand("R");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('W', resultRobot.getDirection());
     }
 
     @Test
-    public void westTurnRightOneTime() {
-        Robot robot = new Robot(1, 2, 'W').turnRight();
-        assertEquals('N', robot.getDirection());
+    public void shouldGet_N_WhenWestGetCommand_R() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'W');
+
+        Robot resultRobot = robot.getCommand("R");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('N', resultRobot.getDirection());
     }
 
     @Test
-    public void continuousRightTurnFromNorthDirection() {
-        Robot robot = new Robot(1, 2, 'N').turnRight().turnRight();
-        assertEquals('S', robot.getDirection());
+    public void shouldGet_S_WhenNorthGetCommand_RR() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
+
+        Robot resultRobot = robot.getCommand("RR");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('S', resultRobot.getDirection());
     }
 
     @Test
-    public void northTurnLeftOneTime() {
-        Robot robot = new Robot(1, 2, 'N').turnLeft();
-        assertEquals('W', robot.getDirection());
+    public void shouldGet_W_WhenNorthGetCommand_L() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
+
+        Robot resultRobot = robot.getCommand("L");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('W', resultRobot.getDirection());
     }
 
     @Test
-    public void eastTurnLeftOneTime() {
-        Robot robot = new Robot(1, 2, 'E').turnLeft();
-        assertEquals('N', robot.getDirection());
+    public void shouldGet_S_WhenWestGetCommand_L() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'W');
+
+        Robot resultRobot = robot.getCommand("L");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('S', resultRobot.getDirection());
     }
 
     @Test
-    public void southTurnLeftOneTime() {
-        Robot robot = new Robot(1, 2, 'S').turnLeft();
-        assertEquals('E', robot.getDirection());
+    public void shouldGet_E_WhenSouthGetCommand_L() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'S');
+
+        Robot resultRobot = robot.getCommand("L");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('E', resultRobot.getDirection());
     }
 
     @Test
-    public void westTurnLeftOneTime() {
-        Robot robot = new Robot(1, 2, 'W').turnLeft();
-        assertEquals('S', robot.getDirection());
+    public void shouldGet_N_WhenEastGetCommand_L() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'E');
+
+        Robot resultRobot = robot.getCommand("L");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('N', resultRobot.getDirection());
     }
 
     @Test
-    public void continuousLeftTurnFromNorthDirection() {
-        Robot robot = new Robot(1, 2, 'N').turnLeft().turnLeft();
-        assertEquals('S', robot.getDirection());
+    public void shouldGet_N_WhenNorthGetCommand_RL() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
+
+        Robot resultRobot = robot.getCommand("RL");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('N', resultRobot.getDirection());
     }
 
     @Test
-    public void turnLeftThenTurnRightFromNorthDirection() {
-        Robot robot = new Robot(1, 2, 'N').turnRight().turnLeft();
-        assertEquals('N', robot.getDirection());
+    public void shouldGet_YPlus1_WhenNorthGetCommand_M() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
+
+        Robot resultRobot = robot.getCommand("M");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE + 1, resultRobot.getY());
+        assertEquals('N', resultRobot.getDirection());
     }
 
     @Test
-    public void walkOneStepFromNorthDirection() {
-        Robot robot = new Robot(1, 2, 'N').walk();
-        assertEquals(1, robot.getX());
-        assertEquals(3, robot.getY());
+    public void shouldGet_XPlus1_WhenEastGetCommand_M() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'E');
+
+        Robot resultRobot = robot.getCommand("M");
+
+        assertEquals(X_VALUE + 1, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('E', resultRobot.getDirection());
     }
 
     @Test
-    public void walkOneStepFromEastDirection() {
-        Robot robot = new Robot(1, 2, 'E').walk();
-        assertEquals(2, robot.getX());
-        assertEquals(2, robot.getY());
+    public void shouldGet_YDelete1_WhenSouthGetCommand_M() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'S');
+
+        Robot resultRobot = robot.getCommand("M");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE - 1, resultRobot.getY());
+        assertEquals('S', resultRobot.getDirection());
     }
 
     @Test
-    public void walkOneStepFromSouthDirection() {
-        Robot robot = new Robot(1, 2, 'S').walk();
-        assertEquals(1, robot.getX());
-        assertEquals(1, robot.getY());
+    public void shouldGet_XDelete1_WhenWestGetCommand_M() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'W');
+
+        Robot resultRobot = robot.getCommand("M");
+
+        assertEquals(X_VALUE - 1, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('W', resultRobot.getDirection());
     }
 
     @Test
-    public void walkOneStepFromWestDirection() {
-        Robot robot = new Robot(1, 2, 'W').walk();
-        assertEquals(0, robot.getX());
-        assertEquals(2, robot.getY());
+    public void shouldGetNewResultWhenNorthGetCommand_RML() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
+
+        Robot resultRobot = robot.getCommand("RML");
+
+        assertEquals(X_VALUE + 1, resultRobot.getX());
+        assertEquals(Y_VALUE, resultRobot.getY());
+        assertEquals('N', resultRobot.getDirection());
     }
 
     @Test
-    public void checkMultipleOperationCommand() {
-        Robot robot = new Robot(1, 2, 'N').walk().turnRight();
-        assertEquals(1, robot.getX());
-        assertEquals(3, robot.getY());
-        assertEquals('E', robot.getDirection());
+    public void shouldGetNewResultWhenNorthGetCommand_LMLMLMLMM() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
+
+        Robot resultRobot = robot.getCommand("LMLMLMLMM");
+
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE + 1, resultRobot.getY());
+        assertEquals('N', resultRobot.getDirection());
     }
 
     @Test
-    public void checkCommandRCanTurnRight() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("R");
-        assertEquals('E', robot.getDirection());
+    public void shouldGetNewResultWhenEastGetCommand_MMRMMRMRRM() {
+        Robot robot = new Robot(3, 3, 'E');
+
+        Robot resultRobot = robot.getCommand("MMRMMRMRRM");
+
+        assertEquals(X_VALUE + 4, resultRobot.getX());
+        assertEquals(Y_VALUE - 1, resultRobot.getY());
+        assertEquals('E', resultRobot.getDirection());
     }
 
     @Test
-    public void checkCommandRRCanTurnRightTwoTimes() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("RR");
-        assertEquals('S', robot.getDirection());
-    }
+    public void shouldRunNormalAndGetRightResultWhenTwoRobotsGetCommand() {
+        Robot robot = new Robot(X_VALUE, Y_VALUE, 'N');
 
-    @Test
-    public void checkCommandLCanTurnLeft() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("L");
-        assertEquals('W', robot.getDirection());
-    }
+        Robot resultRobot = robot.getCommand("LMLMLMLMM");
 
-    @Test
-    public void checkCommandRLCanTurnRightThenTurnLeft() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("RL");
-        assertEquals('N', robot.getDirection());
-    }
+        assertEquals(X_VALUE, resultRobot.getX());
+        assertEquals(Y_VALUE + 1, resultRobot.getY());
+        assertEquals('N', resultRobot.getDirection());
 
-    @Test
-    public void checkCommandMCanGoStraight() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("M");
-        assertEquals(1, robot.getX());
-        assertEquals(3, robot.getY());
-    }
+        Robot robot2 = new Robot(3, 3, 'E');
 
-    @Test
-    public void checkCommandRMLCanTurnRightThenGoStraightTurnLeft() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("RML");
-        assertEquals(2, robot.getX());
-        assertEquals(2, robot.getY());
-        assertEquals('N', robot.getDirection());
-    }
+        Robot resultRobot2 = robot2.getCommand("MMRMMRMRRM");
 
-    @Test
-    public void testMultipleData() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("LMLMLMLMM");
-        assertEquals(1, robot.getX());
-        assertEquals(3, robot.getY());
-        assertEquals('N', robot.getDirection());
-    }
-
-    @Test
-    public void testMultipleData2() {
-        Robot robot = new Robot(3, 3, 'E').getCommand("MMRMMRMRRM");
-        assertEquals(5, robot.getX());
-        assertEquals(1, robot.getY());
-        assertEquals('E', robot.getDirection());
-    }
-
-    @Test
-    public void multipleRobotSituation() {
-        Robot robot = new Robot(1, 2, 'N').getCommand("LMLMLMLMM");
-        assertEquals(1, robot.getX());
-        assertEquals(3, robot.getY());
-        assertEquals('N', robot.getDirection());
-        Robot robot2 = new Robot(3, 3, 'E').getCommand("MMRMMRMRRM");
-        assertEquals(5, robot2.getX());
-        assertEquals(1, robot2.getY());
-        assertEquals('E', robot2.getDirection());
+        assertEquals(X_VALUE + 4, resultRobot2.getX());
+        assertEquals(Y_VALUE - 1, resultRobot2.getY());
+        assertEquals('E', resultRobot2.getDirection());
     }
 
 
